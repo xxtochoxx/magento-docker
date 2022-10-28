@@ -1,8 +1,7 @@
 
+## Proyecto magento-docker
 
-## Proyecto
-
-Magento + Solana pay.
+Alxiri == Magento + Solana pay.
 
 
 ## Procedimiento
