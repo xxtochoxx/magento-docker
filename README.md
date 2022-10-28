@@ -1,3 +1,9 @@
+Ante de iniciar se debe contemplar , el estatus de Docker con los siguientes comandos:
+
+```docker ps```
+
+```docker-compose exec```
+
 
 ## Proyecto magento-docker
 
@@ -14,13 +20,26 @@ Git clone
  Datos seteados para hacerlo de manera práctica,pero la instalación requiere seleccionar versión por host , se recomienda seleccionar las ultimas versiones.
 
 ```Which version of COMPOSER do you want to use 1.x [1] or 2.x [2]? [1/2]: 2```
+
 ```Choose database engine: Mysql [1] or MariaDB [2]? [1/2]: 2```
+
 ```Which version of MYSQL do you want to use 5.6 [1], 5.7 [2], or 8.0 [3]? [1/2/3]: 3```
+
 ```Do you want to use Elasticsearch? [Y/N]: y```
+
 ```Which version of ELASTICSEARCH do you want to install 5.x [1], 6.x [2], 7.6 [3], 7.7 [4], 7.9 [5], 7.10 [6] or 7.16 [7]? [1/2/3/4/5/6/7]: 7```
+
 ```Which version of PHP do you want to use? (7.2 [1], 7.3 [2], 7.4 [3] or 8.1 [4]). Select one [1/2/3/4]: 4```
+
 ```Do you want to use RabbitMQ? [Y/N]: y```
+
 ```Which version of RABBITMQ do you want to install 3.7 [1] or 3.8 [2]? [1/2]: 2```
+
+Datos para validar credenciales
+
+Public Key: 48f875f0f1a5cb10bf06734ca7fca8dc
+ 
+Private Key: 95f1a914862b83a0f937a1888bca5b99 
 
 ## Instalación
  
