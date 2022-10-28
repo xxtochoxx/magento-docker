@@ -1,0 +1,17 @@
+#!/bin/bash
+CURRENT_PATH="$(cd "$(dirname "$0")" && pwd)"
+if [ ! -f ${CURRENT_PATH}/../conf/project.conf ]; then
+  echo "ERROR: Project file not found ${CURRENT_PATH}/../conf/project.conf"
+  exit
+fi
+source ${CURRENT_PATH}/../conf/project.conf
+
+if [ "$1" == "--help" ]; then
+  echo "COMMAND: composer"
+  echo "DESCRIPTION: Run composer command inside the project container"
+  echo "USAGE: composer COMPOSER_OPTIONS"
+  echo "EXAMPLE: composer install"
+  exit
+fi
+
+$BIN_PATH/cli composer "$@"

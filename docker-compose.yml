@@ -1,0 +1,71 @@
+
+version: "3"
+
+services:
+  app_alxiri_m2:
+    build:
+      context: .
+      dockerfile: 'conf/docker/app/Dockerfile'
+    ports:
+      - "80:8000"
+      - "443:8443"
+    links:
+      - db_alxiri_m2
+      - phpfpm_alxiri_m2
+      - rabbitmq_alxiri_m2
+    volumes: &appvolumes
+#      - ./src:/var/www/html:delegated
+#      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
+      - appdata:/var/www/html
+# MOUNTED_POINTS_START
+#      - ./src/app:/var/www/html/app:delegated
+#      - ./src/vendor:/var/www/html/vendor:delegated
+#      - ./src/composer.json:/var/www/html/composer.json:delegated
+#      - ./src/composer.lock:/var/www/html/composer.lock:delegated
+# MOUNTED_POINTS_END
+      - sockdata:/sock
+      - ssldata:/etc/nginx/certs
+  phpfpm_alxiri_m2:
+    build:
+      context: .
+      dockerfile: 'conf/docker/phpfpm/Dockerfile'
+    links:
+      - db_alxiri_m2
+    volumes: *appvolumes
+  db_alxiri_m2:
+    image: mariadb:10.2
+    env_file:
+      - conf/env/db.env
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+  mailhog_alxiri_m2:
+    image: mailhog/mailhog
+    ports:
+      - "1025"
+      - "8025:8025"
+
+  elasticsearch_alxiri_m2:
+    image: elasticsearch:7.9.3
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+  rabbitmq_alxiri_m2:
+    image: rabbitmq:3.7.28-management-alpine
+    env_file:
+      - conf/env/rabbitmq.env
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+volumes:
+  appdata:
+  sockdata:
+  ssldata:
+  rabbitmqdata:

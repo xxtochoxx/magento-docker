@@ -1,0 +1,5 @@
+volumes:
+  appdata:
+  sockdata:
+  ssldata:
+  VOLUME_RABBITMQ_DATA
