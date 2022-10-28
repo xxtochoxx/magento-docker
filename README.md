@@ -45,7 +45,7 @@ Private Key: 95f1a914862b83a0f937a1888bca5b99
  
 Copiar y pegar el siguiente comando
 
-```bash create-project.sh --project=alxiri --domain=alxiri.local --version=MAGENTO_2_VERSION```
+```bash create-project.sh --project=alxiri --domain=alxiri.local --version=2.3.6-p1```
 
 
 
