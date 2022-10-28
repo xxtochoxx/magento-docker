@@ -1,2 +1,0 @@
-# magento-docker
-Proyecto alxiri
